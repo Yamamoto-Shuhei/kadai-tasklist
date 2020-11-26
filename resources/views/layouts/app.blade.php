@@ -28,6 +28,9 @@
         </header>
 
         <div class="container">
+            {{-- エラーメッセージ --}}
+            @include('commons.error_tasks')
+
             @yield('content')
         </div>
 
@@ -37,3 +40,5 @@
         <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
     </body>
 </html>
+
+
