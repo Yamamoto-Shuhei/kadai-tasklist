@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddTitleToUserIdTable extends Migration
+class AddUserIdToTasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddTitleToUserIdTable extends Migration
      */
     public function up()
     {
-        Schema::table('user_id', function (Blueprint $table) {
+        Schema::table('tasks', function (Blueprint $table) {
             //
-              $table->foreign('user_id');
+             $table->unsignedBigInteger('user_id');
+             
+              $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -26,7 +28,7 @@ class AddTitleToUserIdTable extends Migration
      */
     public function down()
     {
-        Schema::table('user_id', function (Blueprint $table) {
+        Schema::table('tasks', function (Blueprint $table) {
             //
             $table->dropForeign('user_id');
         });
