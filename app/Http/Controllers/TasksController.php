@@ -124,14 +124,16 @@ class TasksController extends Controller
         //
          $task = Task::findOrFail($id);
          
+            if (\Auth::id() === $task->user_id) {
           
         // メッセージ編集ビューでそれを表示
         return view('tasks.edit', [
             'task' => $task,
         ]);
         
+        }
        
-       
+       return redirect('/');
     }
 
     /**
